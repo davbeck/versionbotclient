@@ -98,7 +98,8 @@ func (c *versionBotClient) writeHeader(headerPath string) error {
 	}
 	defer f.Close()
 
-	_, err = f.WriteString("#define BUILD_NUMBER " + c.version)
+	_, err = f.WriteString("#define BUILD_NUMBER " + c.version + "\r\n")
+	_, err = f.WriteString("#define APP_VERSION " + c.versionName + "\r\n")
 	if err != nil {
 		return err
 	}
